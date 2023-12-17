@@ -10,13 +10,13 @@ async def ping():
     return "pong"
 
 
-@app.post("/calculate")
-def calculate(body: str = Body(...)):
-    calculation = Calc(body).calculate_opz()
-    if type(calculation) == float:
-        return calculation
+@app.post("/calculation")
+def calculation(body: str = Body(...)):
+    calc = Calc(body).evaluation()
+    if type(calc) == float:
+        return calc
     else:
-        return HTTPException(400, detail=calculation)
+        return HTTPException(400, detail=calc)
 
 
 if name == "main":
